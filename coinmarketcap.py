@@ -257,11 +257,11 @@ def getConv(ticker, number, coin):
     if logo is None:
         logo = getCoinLogo("NO")
 
-    conveur = str(round(float(ticker[0]["price_eur"]),3) * float(number))
-    convusd = str(round(float(ticker[0]["price_usd"]),3) * float(number))
+    conveur = str(float(ticker[0]["price_eur"]) * float(number))
+    convusd = str(float(ticker[0]["price_usd"]) * float(number))
 
     layout_name = number + " " + coin_name + " = "
-    layout_value = conveur + "€ / " + convusd + "$"
+    layout_value = round(conveur,5) + "€ / " + round(convusd,5) + "$"
 
     layout = number + " **" + coin_name + "** = " + conveur + "€ / " + convusd + "$"
 
