@@ -58,7 +58,11 @@ def getCoinLogo(coin):
             "ETN": "https://s2.coinmarketcap.com/static/img/coins/200x200/2137.png",
             "UBQ": "https://s2.coinmarketcap.com/static/img/coins/200x200/588.png",
             "ITNS": "https://s2.coinmarketcap.com/static/img/coins/200x200/2185.png",
-            "BTCZ": "https://s2.coinmarketcap.com/static/img/coins/200x200/2041.png"}
+            "BTCZ": "https://s2.coinmarketcap.com/static/img/coins/200x200/2041.png",
+            "EVN": "https://s2.coinmarketcap.com/static/img/coins/200x200/2526.png",
+            "HOT": "https://s2.coinmarketcap.com/static/img/coins/200x200/2682.png"
+            
+            }
 
     if coin in logos:
         return logos[coin]
