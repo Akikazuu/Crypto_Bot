@@ -107,6 +107,6 @@ async def on_message(message):
                     await bot.send_message(channellmf, embed = rep)
 
 
-#bot.loop.create_task(Top10())
-#bot.loop.create_task(Purge())
+bot.loop.create_task(Top10())
+bot.loop.create_task(Purge())
 bot.run("NDMyMjA2MDc1MDEwMzUxMTA0.Daqr7A.4uR5KqXcVKCxVOiq9O5IOU5B0ZU")
