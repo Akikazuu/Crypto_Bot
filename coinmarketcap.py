@@ -257,13 +257,13 @@ def getConv(ticker, number, coin):
     if logo is None:
         logo = getCoinLogo("NO")
 
-    conveur = str(float(ticker[0]["price_eur"]) * float(number))
-    convusd = str(float(ticker[0]["price_usd"]) * float(number))
+    conveur = float(ticker[0]["price_eur"]) * float(number)
+    convusd = float(ticker[0]["price_usd"]) * float(number)
 
-    layout_name = number + " " + coin_name + " = "
-    layout_value = round(conveur,5) + "€ / " + round(convusd,5) + "$"
+    #layout_name = number + " " + coin_name + " = "
+    #layout_value = conveur + "€ / " + convusd + "$"
 
-    layout = number + " **" + coin_name + "** = " + conveur + "€ / " + convusd + "$"
+    layout = "***1 " + coin_name + " = " + str(round(float(conveur),5)) + "€ / " + str(round(float(convusd),5)) + "$***\n\n __Your conversion :__\n" + number + " **" + coin_name + "** = " + str(round(float(conveur),5)) + "€ / " + str(round(float(convusd),5)) + "$"
 
     embed = discord.Embed(title = "", description = layout, color = 0xFF9900)
     embed.set_author(name = coin_name + " (" + coin.upper() + ") at " + getDate(), icon_url = logo)
