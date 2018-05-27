@@ -149,7 +149,10 @@ def getCoinName(coin):
              "UBQ": "Ubiq",
              "MUSIC": "Musicoin",
              "ETN": "Electroneum",
-             "XLM": "Stellar"}
+             "XLM": "Stellar",
+             "EVN": "Envion",
+             "HOT": "Holo"
+             }
 
     if coin in names:
         return names[coin]
@@ -168,8 +171,8 @@ def getTickerData(money):
     return None
 
 def getData(ticker, coin):
+    
     coin_name = getCoinName(coin.upper())
-
     logo = getCoinLogo(coin.upper())
     if logo is None:
         logo = getCoinLogo("NO")
@@ -211,6 +214,7 @@ def getData(ticker, coin):
     embed.add_field(name = "Price", value = price, inline = False)
     embed.add_field(name = "Change", value = change, inline = False)
     embed.set_thumbnail(url = logo)
+    embed.set_footer(text = "Powered by Akikazu and coinmarketcap.com")
     return embed
 
 
@@ -239,4 +243,26 @@ def getTop(number):
     header = "Top " + str(number) + " currency"
     embed = discord.Embed(title = "", description = description, color=0xFF9900)
     embed.set_author(name = header, icon_url = getCoinLogo("BTC"))
+    embed.set_footer(text = "Powered by Akikazu and coinmarketcap.com")
+    return embed
+
+def getConv(ticker, number, coin):
+    
+    coin_name = getCoinName(coin.upper())
+    logo = getCoinLogo(coin.upper())
+    if logo is None:
+        logo = getCoinLogo("NO")
+
+    conveur = str(round(float(ticker[0]["price_eur"]),3) * float(number))
+    convusd = str(round(float(ticker[0]["price_usd"]),3) * float(number))
+
+    layout_name = number + " " + coin_name + " = "
+    layout_value = conveur + "€ / " + convusd + "$"
+
+    layout = number + " **" + coin_name + "** = " + conveur + "€ / " + convusd + "$"
+
+    embed = discord.Embed(title = "", description = layout, color = 0xFF9900)
+    embed.set_author(name = coin_name + " (" + coin.upper() + ") at " + getDate(), icon_url = logo)
+    #embed.add_field(name = layout_name, value = layout_value, inline = False)
+    embed.set_footer(text = "Powered by Akikazu and coinmarketcap.com")
     return embed
