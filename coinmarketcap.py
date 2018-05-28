@@ -260,13 +260,9 @@ def getConv(ticker, number, coin):
     conveur = float(ticker[0]["price_eur"]) * float(number)
     convusd = float(ticker[0]["price_usd"]) * float(number)
 
-    #layout_name = number + " " + coin_name + " = "
-    #layout_value = conveur + "€ / " + convusd + "$"
-
-    layout = "***1 " + coin_name + " = " + str(round(float(conveur),5)) + "€ / " + str(round(float(convusd),5)) + "$***\n\n __Your conversion :__\n" + number + " **" + coin_name + "** = " + str(round(float(conveur),5)) + "€ / " + str(round(float(convusd),5)) + "$"
+    layout = "***1 " + coin_name + " = " + str(round(float(ticker[0]["price_eur"]),5)) + "€ / " + str(round(float(ticker[0]["price_usd"]),5)) + "$***\n\n __Your conversion :__\n" + number + " **" + coin_name + "** = " + str(round(float(conveur),5)) + "€ / " + str(round(float(convusd),5)) + "$"
 
     embed = discord.Embed(title = "", description = layout, color = 0xFF9900)
     embed.set_author(name = coin_name + " (" + coin.upper() + ") at " + getDate(), icon_url = logo)
-    #embed.add_field(name = layout_name, value = layout_value, inline = False)
     embed.set_footer(text = "Powered by Akikazu and coinmarketcap.com")
     return embed
