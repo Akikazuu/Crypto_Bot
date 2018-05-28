@@ -17,29 +17,36 @@ channellmf = discord.Object(id = "295660477386850314")
 channelserya = discord.Object(id = "424979780899700749")
 
 
+<<<<<<< HEAD
+def helpPLZ():
+    description = "Type **?<coin>** to printout the info of this coin\n" + "Type **?conv <amount> <coin>** to printout the X coin conversion to € / $\n" + "Type **?top <amount>** to printout the top X coin\n" + "(List of coin in coinmarketcap.com only)"
+    embed = discord.Embed(title = ":information_source: Bot helper", description = "", color = 0x3f89c1)
+    embed.add_field(name = "Commands :", value = description, inline = False)
+    embed.add_field(name = "Version :", value = "`v1.0`", inline = False)
+=======
 def HelpPLZ():
     description = "Type **?<coin>** to printout the info of this coin\n" + "Type **?conv <amount> <coin>** to printout the X coin conversion to € / $\n" + "Type **?top <amount>** to printout the top X coin\n" + " (List of coin in coinmarketcap.com only)"
     embed = discord.Embed(title = "Bot helper", description = description, color = 0xFF9900)
+>>>>>>> a74806a7d4a8ff14e2f27cb2e3a938de422ea2fe
     embed.set_footer(text = "Developed by Akikazu, host by Antho")
     return embed
 
-def getCoin(coin):
-    ticker = coinmarketcap.getTickerData(coin)
-
-    if ticker is None:
-        embed = discord.Embed(title = "Error", description = "Coin : " + coin.upper() + " not found in coinmarketcap API", color = 0xFF9900)
+def error(coin):
+        embed = discord.Embed(title = ":no_entry_sign: Error", description = ":warning: Coin : " + coin.upper() + " not found in coinmarketcap API", color = 0xBC1D35)
         embed.set_footer(text = "Contact Akikazu if the currency exists in coinmarketcap.com")
         return embed
+
+def getCoin(coin):
+    ticker = coinmarketcap.getTickerData(coin)
+    if ticker is None:
+        return error(coin)
     else:
         return coinmarketcap.getData(ticker, coin)
 
 def getConv(number, coin):
     ticker = coinmarketcap.getTickerData(coin)
-
     if ticker is None:
-        embed = discord.Embed(title = "Error", description = "Coin : " + coin.upper() + " not found in coinmarketcap API", color = 0xFF9900)
-        embed.set_footer(text = "Contact Akikazu if the currency exists in coinmarketcap.com")
-        return embed
+        return error(coin)
     else:
         return coinmarketcap.getConv(ticker, number, coin)
 
@@ -96,7 +103,11 @@ async def on_message(message):
                     rep = getConv(number,coin)
 
             if cmd == "help":
+<<<<<<< HEAD
+                rep = helpPLZ()
+=======
                 rep = HelpPLZ()
+>>>>>>> a74806a7d4a8ff14e2f27cb2e3a938de422ea2fe
                 
             if rep:
                 await bot.send_message(target, embed = rep)
