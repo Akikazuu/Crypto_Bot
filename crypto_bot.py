@@ -16,12 +16,36 @@ channelethos = discord.Object(id = "432260844110479360")
 channellmf = discord.Object(id = "295660477386850314")
 channelserya = discord.Object(id = "424979780899700749")
 
+def getDonate():
+    donate = "```You can donate me in ETH,ETC,EXP,UBQ,MUSIC to the next address : 0xaEe9672A5B8E735BDFfda9a96CD4321bcCc41b70```"
+    need_help = "```First type ?help for get help.\nYou have issue or have request you can text me on Discord at Akikazu#1604```"
+
+    embed = discord.Embed(title = ":sparkles: Akikazu", description = "Thanks for use Crypto_Bot", color = 0x1C6C90)
+    embed.add_field(name = ":money_mouth: Do you like this bot ? :money_mouth:", value = donate, inline = False)
+    embed.add_field(name = ":information_source:  Do you need help ? :information_source: ", value = need_help, inline = False)
+    embed.set_footer(text = "Developed by Akikazu, host by Antho")
+    embed.set_thumbnail(url = "http://www.broadwayrfd.org/product/donation/")
+    return embed
+
+def getVersion():
+    description_v1 = "```Start bot with 2 commands : ?top <X> and ?<coin>```"
+    description_v11 = "```New feature : ?conv <ammount> <coin>, bug corrections```"
+    description_v12 = "```Big update : use the new coinmarketcap API, dynamic search of coin on coinmarketcap.com, bug corrections```"
+
+    embed = discord.Embed(title = ":tools:  Crypto_Bot Changelog", description = "You can see all the update for the Bot", color = 0x5BD68D)
+    embed.add_field(name = "Actual Version : v1.2", value = description_v12, inline = False)
+    embed.add_field(name = "v1.1", value = description_v11, inline = False)
+    embed.add_field(name = "v1.0", value = description_v1, inline = False)
+    embed.set_footer(text = "Developed by Akikazu, host by Antho")
+    embed.set_thumbnail(url = "https://www.nsrp.fr/img/changelogicon.png")
+
+    return embed
 
 def helpPLZ():
-    description = "Type **?<coin>** to printout the info of this coin\n" + "Type **?conv <amount> <coin>** to printout the X coin conversion to € / $\n" + "Type **?top <amount>** to printout the top X coin\n" + "(List of coin in coinmarketcap.com only)"
+    description = "Type **?<coin>** to printout the info of this coin\n" + "Type **?conv <amount> <coin>** to printout the X coin conversion to € / $\n" + "Type **?top <amount>** to printout the top X coin\n" + "Type **?version** to printout the changelog for the bot\n" + "Type **?donate** to make donation\n" + "(List of coin in coinmarketcap.com only)"
     embed = discord.Embed(title = ":information_source: Bot helper", description = "", color = 0x3f89c1)
     embed.add_field(name = "Commands :", value = description, inline = False)
-    embed.add_field(name = "Version :", value = "`v1.0`", inline = False)
+    embed.add_field(name = "Version :", value = "`v1.2`", inline = False)
     embed.set_footer(text = "Developed by Akikazu, host by Antho")
     return embed
 
@@ -35,7 +59,7 @@ def getCoin(coin):
     if ticker is None:
         return error(coin)
     else:
-        return coinmarketcap.getData(ticker, coin)
+        return coinmarketcap.getDataV2(ticker, coin)
 
 def getConv(number, coin):
     ticker = coinmarketcap.getTickerData(coin)
@@ -83,7 +107,17 @@ async def on_message(message):
             cmd = words[0][1:]
 
             if len(words) == 1:
-                rep = getCoin(str(cmd))
+                if cmd == "help":
+                    rep = helpPLZ()
+
+                elif cmd == "version":
+                    rep = getVersion()
+            
+                elif cmd == "donate":
+                    rep = getDonate()
+
+                else:
+                    rep = getCoin(str(cmd))
                     
             if len(words) == 2:
                 number = words[1]
@@ -96,9 +130,7 @@ async def on_message(message):
                 if cmd == "conv":
                     rep = getConv(number,coin)
 
-            if cmd == "help":
-                rep = helpPLZ()
-                
+            
             if rep:
                 await bot.send_message(target, embed = rep)
             
