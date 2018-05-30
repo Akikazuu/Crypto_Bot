@@ -24,13 +24,21 @@ def getDonate():
     embed.add_field(name = ":money_mouth: Do you like this bot ? :money_mouth:", value = donate, inline = False)
     embed.add_field(name = ":information_source:  Do you need help ? :information_source: ", value = need_help, inline = False)
     embed.set_footer(text = "Developed by Akikazu, host by Antho")
+<<<<<<< HEAD
+=======
     embed.set_thumbnail(url = "http://www.broadwayrfd.org/product/donation/")
+>>>>>>> 2c4f0dbb45abad854554ec5d6db4b046be2e749a
     return embed
 
 def getVersion():
     description_v1 = "```Start bot with 2 commands : ?top <X> and ?<coin>```"
+<<<<<<< HEAD
+    description_v11 = "```New feature : ?conv <ammount> <coin>, bug correction```"
+    description_v12 = "```Big update : use the new coinmarketcap API, dynamic search of coin and logo on coinmarketcap.com, bug correction```"
+=======
     description_v11 = "```New feature : ?conv <ammount> <coin>, bug corrections```"
     description_v12 = "```Big update : use the new coinmarketcap API, dynamic search of coin on coinmarketcap.com, bug corrections```"
+>>>>>>> 2c4f0dbb45abad854554ec5d6db4b046be2e749a
 
     embed = discord.Embed(title = ":tools:  Crypto_Bot Changelog", description = "You can see all the update for the Bot", color = 0x5BD68D)
     embed.add_field(name = "Actual Version : v1.2", value = description_v12, inline = False)

@@ -96,9 +96,15 @@ def getTickerData(money):
 def getDataV2(ticker, coin):
     
     coin_name = ticker["data"]["name"]
+<<<<<<< HEAD
+    logo = "https://s2.coinmarketcap.com/static/img/coins/200x200/"+ str(getCoinId(coin.upper())) + ".png"
+    if str(getCoinId(coin.upper())) is None:
+        logo = "https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/No-logo.svg/1280px-No-logo.svg.png"
+=======
     logo = getCoinLogo(coin.upper())
     if logo is None:
         logo = getCoinLogo("NO")
+>>>>>>> 2c4f0dbb45abad854554ec5d6db4b046be2e749a
 
     if ticker["data"]["quotes"]["USD"]["price"] is not None:
         usd_price = "Current USD Price: `" + str(round(float(ticker["data"]["quotes"]["USD"]["price"]),6)) + "$`\n"
@@ -179,16 +185,22 @@ def getTop(number):
     description = "Current ranking for the top "+ str(number) +" at " + getDate() + "\nCoin : USD | EUR | 24h\n\n" + embed_data
     header = "Top " + str(number) + " currency"
     embed = discord.Embed(title = "", description = description, color=0xFF9900)
-    embed.set_author(name = header, icon_url = getCoinLogo("BTC"))
+    embed.set_author(name = header, icon_url = "https://s2.coinmarketcap.com/static/img/coins/200x200/1.png")
     embed.set_footer(text = "Powered by Akikazu and coinmarketcap.com")
     return embed
 
 def getConv(ticker, number, coin):
     
     coin_name = ticker["data"]["name"]
+<<<<<<< HEAD
+    logo = "https://s2.coinmarketcap.com/static/img/coins/200x200/"+ str(getCoinId(coin.upper())) + ".png"
+    if str(getCoinId(coin.upper())) is None:
+        logo = "https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/No-logo.svg/1280px-No-logo.svg.png"
+=======
     logo = getCoinLogo(coin.upper())
     if logo is None:
         logo = getCoinLogo("NO")
+>>>>>>> 2c4f0dbb45abad854554ec5d6db4b046be2e749a
 
     conveur = float(ticker["data"]["quotes"]["EUR"]["price"]) * float(number)
     convusd = float(ticker["data"]["quotes"]["USD"]["price"]) * float(number)
