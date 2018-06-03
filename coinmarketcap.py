@@ -7,7 +7,7 @@ import discord, requests, json
 
 def getDate():
     date = datetime.now()
-    return strftime("%d-%m-%Y %H:%M:%S")
+    return strftime("the %d-%m-%Y at %H:%M:%S")
 
 def getCoinLogo(coin):
     logo = "https://s2.coinmarketcap.com/static/img/coins/200x200/"+ str(getCoinId(coin.upper())) + ".png"
@@ -96,7 +96,7 @@ def getDataV2(ticker, coin):
     embed.add_field(name = "Price", value = price, inline = False)
     embed.add_field(name = "Change", value = change, inline = False)
     embed.set_thumbnail(url = logo)
-    embed.set_footer(text = "Powered by Akikazu and coinmarketcap.com")
+    embed.set_footer(text = "Powered by Akikazu\nand coinmarketcap.com")
     return embed
 
 def getTop(number):
@@ -120,11 +120,11 @@ def getTop(number):
     
                 embed_data += str(ticker["data"][keys]["rank"]) + ". " + name + "`" + usd_price + "` | `" + eur_price + "` | " + change24 +  "\n"
         
-    description = "Current ranking for the top "+ str(number) +" at " + getDate() + "\nCoin : USD | EUR | 24h\n\n" + embed_data
+    description = "Current ranking for the top "+ str(number) + getDate() + "\nCoin : USD | EUR | 24h\n\n" + embed_data
     header = "Top " + str(number) + " currency"
     embed = discord.Embed(title = "", description = description, color=0xFF9900)
     embed.set_author(name = header, icon_url = "https://s2.coinmarketcap.com/static/img/coins/200x200/1.png")
-    embed.set_footer(text = "Powered by Akikazu and coinmarketcap.com")
+    embed.set_footer(text = "Powered by Akikazu\nand coinmarketcap.com")
     return embed
 
 def getConv(ticker, number, coin):
@@ -138,6 +138,6 @@ def getConv(ticker, number, coin):
     layout = "***1 " + coin_name + " = " + str(round(float(ticker["data"]["quotes"]["USD"]["price"]),5)) + "$ / " + str(round(float(ticker["data"]["quotes"]["EUR"]["price"]),5)) + "€***\n\n __Your conversion :__\n" + number + " **" + coin_name + "** = " + str(round(float(convusd),5)) + "$ / " + str(round(float(conveur),5)) + "€"
 
     embed = discord.Embed(title = "", description = layout, color = 0xFF9900)
-    embed.set_author(name = coin_name + " (" + coin.upper() + ") at " + getDate(), icon_url = logo)
+    embed.set_author(name = coin_name + " (" + coin.upper() + ") "+ getDate(), icon_url = logo)
     embed.set_footer(text = "Powered by Akikazu and coinmarketcap.com")
     return embed
