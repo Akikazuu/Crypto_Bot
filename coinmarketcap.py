@@ -96,7 +96,7 @@ def getDataV2(ticker, coin):
     embed.add_field(name = "Price", value = price, inline = False)
     embed.add_field(name = "Change", value = change, inline = False)
     embed.set_thumbnail(url = logo)
-    embed.set_footer(text = "Powered by Akikazu\nand coinmarketcap.com")
+    embed.set_footer(text = "Powered by Akikazu and coinmarketcap.com")
     return embed
 
 def getTop(number):
@@ -120,11 +120,11 @@ def getTop(number):
     
                 embed_data += str(ticker["data"][keys]["rank"]) + ". " + name + "`" + usd_price + "` | `" + eur_price + "` | " + change24 +  "\n"
         
-    description = "Current ranking for the top "+ str(number) + getDate() + "\nCoin : USD | EUR | 24h\n\n" + embed_data
+    description = "Current ranking for the top "+ str(number) + " " + getDate() + "\nCoin : USD | EUR | 24h\n\n" + embed_data
     header = "Top " + str(number) + " currency"
     embed = discord.Embed(title = "", description = description, color=0xFF9900)
     embed.set_author(name = header, icon_url = "https://s2.coinmarketcap.com/static/img/coins/200x200/1.png")
-    embed.set_footer(text = "Powered by Akikazu\nand coinmarketcap.com")
+    embed.set_footer(text = "Powered by Akikazu and coinmarketcap.com")
     return embed
 
 def getConv(ticker, number, coin):

@@ -81,7 +81,6 @@ async def Top10():
         await bot.send_message(channelethos, embed = embed)
         await bot.send_message(channellmf, embed = embed)
         await bot.send_message(channelserya, embed = embed)
-        await bot.send_message(channelblock, embed = embed)
         await asyncio.sleep(3600)
 
 @bot.event
