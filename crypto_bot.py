@@ -15,10 +15,11 @@ bot = commands.Bot(command_prefix = "?")
 channelethos = discord.Object(id = "432260844110479360")
 channellmf = discord.Object(id = "295660477386850314")
 channelserya = discord.Object(id = "424979780899700749")
+channelyaka = discord.Object(id = "453201375636094987")
 
 def getDonate():
     donate = "```You can donate me in ETH,ETC,EXP,UBQ,MUSIC to the next address : 0xaEe9672A5B8E735BDFfda9a96CD4321bcCc41b70```"
-    need_help = "```First type ?help for get help.\nYou have issue or have request you can text me on Discord at Akikazu#1604```"
+    need_help = "```First type ?help for get help.\nIf you have issue or have request you can text me on Discord at Akikazu#1604```"
 
     embed = discord.Embed(title = ":sparkles: Akikazu", description = "Thanks for use Crypto_Bot", color = 0x1C6C90)
     embed.add_field(name = ":money_mouth: Do you like this bot ? :money_mouth:", value = donate, inline = False)
@@ -81,6 +82,7 @@ async def Top10():
         await bot.send_message(channelethos, embed = embed)
         await bot.send_message(channellmf, embed = embed)
         await bot.send_message(channelserya, embed = embed)
+        await bot.send_message(channelyaka, embed = embed)
         await asyncio.sleep(3600)
 
 @bot.event
@@ -89,6 +91,7 @@ async def Purge():
     while not bot.is_closed:
         yesterday = datetime.today() - timedelta(days = 1)
         await bot.purge_from(channelethos, before = yesterday)
+        #await bot.send_message(channelyaka, embed = yesterday)
         #await bot.purge_from(channellmf, before = yesterday)
 
         print("PURGE NOW !")
@@ -100,7 +103,7 @@ async def on_message(message):
     words = msg.split()
     target = discord.Object(id = message.channel.id)
 
-    if target.id == channelethos.id or target.id == channellmf.id or target.id == channelserya.id:
+    if target.id == channelethos.id or target.id == channellmf.id or target.id == channelserya.id or target.id == channelyaka.id:
         if msg.startswith("?"):
 
             cmd = words[0][1:]
