@@ -13,7 +13,7 @@ Client = discord.Client()
 bot = commands.Bot(command_prefix = "?")
 
 channelethos = discord.Object(id = "432260844110479360")
-channellmf = discord.Object(id = "295660477386850314")
+channellmfr = discord.Object(id = "480336808073232394")
 channelserya = discord.Object(id = "424979780899700749")
 channelyaka = discord.Object(id = "453201375636094987")
 
@@ -80,7 +80,7 @@ async def Top10():
     while not bot.is_closed:
         embed = coinmarketcap.getTop(10)
         await bot.send_message(channelethos, embed = embed)
-        await bot.send_message(channellmf, embed = embed)
+        await bot.send_message(channellmfr, embed = embed)
         await bot.send_message(channelserya, embed = embed)
         await bot.send_message(channelyaka, embed = embed)
         await asyncio.sleep(3600)
@@ -103,7 +103,7 @@ async def on_message(message):
     words = msg.split()
     target = discord.Object(id = message.channel.id)
 
-    if target.id == channelethos.id or target.id == channellmf.id or target.id == channelserya.id or target.id == channelyaka.id:
+    if target.id == channelethos.id or target.id == channellmfr.id or target.id == channelserya.id or target.id == channelyaka.id:
         if msg.startswith("?"):
 
             cmd = words[0][1:]
