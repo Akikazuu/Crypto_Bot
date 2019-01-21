@@ -16,6 +16,7 @@ channelethos = discord.Object(id = "432260844110479360")
 channellmfr = discord.Object(id = "480336808073232394")
 channelserya = discord.Object(id = "424979780899700749")
 channelyaka = discord.Object(id = "453201375636094987")
+channelmorph = discord.Object(id = "536651849311191041")
 
 def getDonate():
     donate = "```You can donate me in ETH,ETC,EXP,UBQ,MUSIC to the next address : 0xaEe9672A5B8E735BDFfda9a96CD4321bcCc41b70```"
@@ -83,6 +84,8 @@ async def Top10():
         await bot.send_message(channellmfr, embed = embed)
         await bot.send_message(channelserya, embed = embed)
         await bot.send_message(channelyaka, embed = embed)
+        await bot.send_message(channelmorph, embed = embed)
+
         await asyncio.sleep(3600)
 
 @bot.event
@@ -103,7 +106,7 @@ async def on_message(message):
     words = msg.split()
     target = discord.Object(id = message.channel.id)
 
-    if target.id == channelethos.id or target.id == channellmfr.id or target.id == channelserya.id or target.id == channelyaka.id:
+    if target.id == channelethos.id or target.id == channellmfr.id or target.id == channelserya.id or target.id == channelyaka.id or target.id == channelmorph.id:
         if msg.startswith("?"):
 
             cmd = words[0][1:]
