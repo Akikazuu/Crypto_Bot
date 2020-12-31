@@ -20,7 +20,7 @@ channelyaka = discord.Object(id = "453201375636094987")
 channelmorph = discord.Object(id = "536651849311191041")
 """
 def getDonate():
-    donate = "```You can donate me in ETH,ETC,EXP,UBQ,MUSIC to the next address : 0xaEe9672A5B8E735BDFfda9a96CD4321bcCc41b70```"
+    donate = "```You can donate me in ETH,ETC ... (all erc20 token) to the next address : 0xaEe9672A5B8E735BDFfda9a96CD4321bcCc41b70```"
     need_help = "```First type ?help for get help.\nIf you have issue or have request you can text me on Discord at Akikazu#1604```"
 
     embed = discord.Embed(title = ":sparkles: Akikazu", description = "Thanks for use Crypto_Bot", color = 0x1C6C90)
